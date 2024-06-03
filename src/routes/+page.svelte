@@ -2,9 +2,11 @@
   import QuizList from '$lib/components/quiz-list.svelte';
 </script>
 
-<h1 class="text-dark-navy text-4xl text-light mt-8">
+<h1
+  class="text-dark-navy text-4xl font-light sm:text-[4rem] sm:font-regular sm:leading-[100%] mt-8"
+>
   Welcome to the <br />
   <b>Frontend Quiz!</b>
 </h1>
-<p class="text-body-small mt-4 mb-10">Pick a subject to get started.</p>
+<p class="text-body-small text-grey-navy mt-4 mb-10">Pick a subject to get started.</p>
 <QuizList />

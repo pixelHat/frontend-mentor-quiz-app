@@ -4,7 +4,7 @@
   import Header from '$lib/components/header.svelte';
 </script>
 
-<article class="container px-6">
+<article class="container px-6 md:px-16">
   <Header text={$page.data.title} />
   <slot />
 </article>
@@ -15,5 +15,10 @@
     top: 0;
     left: 0;
     min-height: 100vh;
+  }
+  @media (min-width: 768px) {
+    article {
+      background-image: url(/images/pattern-background-tablet-light.svg);
+    }
   }
 </style>

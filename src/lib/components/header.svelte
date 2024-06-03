@@ -3,9 +3,9 @@
   export let text = '';
 </script>
 
-<article class="flex items-center gap-x-2 p-x-6 py-8">
+<article class="flex items-center p-x-6 py-8 sm:pt-10 sm:pb-12">
   <QuizTitle {text} />
-  <div class="ml-auto flex items-center">
+  <div class="ml-auto flex items-center gap-x-2">
     <button>
       <img src="/images/icon-sun-dark.svg" alt="" />
     </button>

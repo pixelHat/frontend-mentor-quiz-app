@@ -20,10 +20,10 @@
 
 {#if text}
   <article class="flex items-center space-x-[1.125rem]">
-    <div class="p-1.5 rounded-md {bg}">
-      <img {src} alt="" />
+    <div class="p-1.5 rounded-md {bg} h-[40px] sm:h-[55px]">
+      <img class="h-full w-full" {src} alt="" />
     </div>
-    <span class="text-lg font-medium text-dark-navy">
+    <span class="text-lg sm:text-[1.75rem] text-dark-navy font-medium">
       {text}
     </span>
   </article>
