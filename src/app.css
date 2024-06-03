@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  background-color: #F4F6FA;
+}
+
+.display {
+  font-family: 'Rubik', sans-serif;
+  font-weight: 500;
+  font-size: 9rem;
+  line-height: 100%;
+}
+
+.heading-large {
+  font-family: 'Rubik', sans-serif;
+  font-size: 4rem;
+  line-height: 100%;
+}
+
+.heading-medium {
+  font-family: 'Rubik', sans-serif;
+  font-size: 2.25rem;
+  line-height: 100%;
+}
+
+.heading-small {
+  font-family: 'Rubik', sans-serif;
+  font-size: 1.5rem;
+  line-height: 100%;
+}
+
+.text-body-medium {
+  font-family: 'Rubik', sans-serif;
+  font-size: .75rem;
+  line-height: 150%;
+}
+
+.text-body-small {
+  font-family: 'Rubik', sans-serif;
+  font-size: .75rem;
+  line-height: 150%;
+  font-style: italic;
+}
