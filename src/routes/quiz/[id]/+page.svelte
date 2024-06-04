@@ -66,19 +66,24 @@
 
 <article class="md:flex">
   <section class="md:w-1/2 flex flex-col">
-    <p class="text-body-small text-grey-navy">Question {currentQuestionIndex + 1} of {total}</p>
-    <h1 class="mt-3 text-dark-navy text-xl font-medium sm:text-4xl sm:mt-7">{current.question}</h1>
-    <hr
-      class="bg-purple h-2 rounded-lg mt-7 w-0 sm:mt-11 md:mt-auto md:-translate-y-28"
-      bind:this={progressBarEl}
-    />
+    <p class="text-body-small text-grey-navy dark:text-light-bluish">
+      Question {currentQuestionIndex + 1} of {total}
+    </p>
+    <h1 class="mt-3 text-dark-navy text-xl font-medium sm:text-4xl sm:mt-7 dark:text-white">
+      {current.question}
+    </h1>
+    <div
+      class="bg-transparent w-[90%] p-1 mt-7 rounded-lg sm:mt-11 md:mt-auto md:-translate-y-28 dark:bg-navy"
+    >
+      <hr class="bg-purple h-2 border-0 rounded-lg w-0 dark:bg-purple" bind:this={progressBarEl} />
+    </div>
   </section>
 
   <section class="md:w-1/2">
     <ul class="mt-10 space-y-2 sm:space-y-6 sm:mt-16">
       {#each current.options as option, idx}
         <li
-          class="bg-white rounded-xl shadow-list-item sm:rounded-3xl"
+          class="bg-white rounded-xl shadow-list-item sm:rounded-3xl dark:bg-navy"
           class:error={idx === selected && status === 'error'}
           class:selected={idx === selected}
           class:success={idx === selected && status === 'success'}
@@ -88,11 +93,11 @@
             on:click={() => onSelect(idx)}
           >
             <p
-              class="letter flex items-center justify-center rounded-md h-10 w-10 text-center text-lg font-medium text-grey-navy sm:text-2xl group-hover:bg-light-purple group-hover:text-purple"
+              class="letter flex items-center justify-center rounded-md h-10 w-10 text-center text-lg font-medium text-grey-navy sm:text-2xl group-hover:bg-light-purple group-hover:text-purple dark:bg-light-gray dark:text-grey-navy"
             >
               {letters[idx]}
             </p>
-            <p class="text-lg font-medium text-dark-navy sm:text-2xl">{option}</p>
+            <p class="text-lg font-medium text-dark-navy sm:text-2xl dark:text-white">{option}</p>
             {#if (idx === selected && status === 'success') || (status === 'error' && current.answer === option)}
               <img src="/images/icon-correct.svg" alt="" class="ml-auto" />
             {:else if idx === selected && status === 'error'}
@@ -109,7 +114,7 @@
     >
     {#if isDirty && selected === -1}
       <small
-        class="mt-3 text-red text-lg flex items-center justify-center gap-x-2.5 font-regular sm:text-xs sm:mt-8"
+        class="mt-3 text-red text-lg flex items-center justify-center gap-x-2.5 font-regular sm:text-xs sm:mt-8 dark:text-white"
         ><img src="/images/icon-error.svg" alt="" /> Please select an answer</small
       >
     {/if}

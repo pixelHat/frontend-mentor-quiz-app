@@ -23,7 +23,7 @@
     <div class="p-1.5 rounded-md {bg} h-[40px] sm:h-[55px]">
       <img class="h-full w-full" {src} alt="" />
     </div>
-    <span class="text-lg sm:text-[1.75rem] text-dark-navy font-medium">
+    <span class="text-lg sm:text-[1.75rem] text-dark-navy font-medium dark:text-white">
       {text}
     </span>
   </article>

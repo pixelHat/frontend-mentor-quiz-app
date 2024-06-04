@@ -24,7 +24,7 @@
   {#each quizzes as quiz}
     <li>
       <a
-        class="flex bg-white rounded-xl shadow-list-item p-3 sm:rounded-3xl"
+        class="flex bg-white rounded-xl shadow-list-item p-3 sm:rounded-3xl dark:bg-navy"
         href="/quiz/{quiz.id}"
       >
         <QuizTitle text={quiz.text} />

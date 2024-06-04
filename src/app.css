@@ -8,6 +8,10 @@
   background-color: #F4F6FA;
 }
 
+.dark {
+  background-color: #313E51;
+}
+
 .display {
   font-family: 'Rubik', sans-serif;
   font-weight: 500;

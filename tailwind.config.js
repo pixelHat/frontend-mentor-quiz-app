@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./src/**/*.{html,js,svelte,ts}'],
+  darkMode: 'selector',
   theme: {
     extend: {
       colors: {
@@ -22,7 +23,8 @@ export default {
         md: '1440px'
       },
       boxShadow: {
-        'list-item': '0px 16px 40px rgba(143, 160, 193, 0.14)'
+        'list-item': '0px 16px 40px rgba(143, 160, 193, 0.14)',
+        'list-item-dark': 'box-shadow: 0px 16px 40px rgba(49, 62, 81, 0.14)'
       },
       borderWidth: {
         3: '3px'
