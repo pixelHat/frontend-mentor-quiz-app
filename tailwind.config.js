@@ -4,6 +4,7 @@ export default {
   theme: {
     extend: {
       colors: {
+        'light-purple': '#F6E7FF',
         purple: '#A729F5',
         'dark-navy': '#313E51',
         navy: '#3B4D66',
@@ -25,6 +26,9 @@ export default {
       },
       borderWidth: {
         3: '3px'
+      },
+      spacing: {
+        21: '5.0625rem'
       }
     }
   },

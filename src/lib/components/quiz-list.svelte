@@ -23,7 +23,10 @@
 <ul class="flex flex-col gap-y-3">
   {#each quizzes as quiz}
     <li>
-      <a class="flex bg-white rounded-xl shadow-list-item p-3" href="/quiz/{quiz.id}">
+      <a
+        class="flex bg-white rounded-xl shadow-list-item p-3 sm:rounded-3xl"
+        href="/quiz/{quiz.id}"
+      >
         <QuizTitle text={quiz.text} />
       </a>
     </li>

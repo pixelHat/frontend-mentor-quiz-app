@@ -45,3 +45,7 @@
   line-height: 150%;
   font-style: italic;
 }
+
+.btn:hover {
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), #A729F5;
+}

@@ -15,6 +15,7 @@
   let status: 'none' | 'success' | 'error' = 'none';
   let isDirty = false;
   let submitButtonText = 'Submit Answer';
+  let progressBarEl: HTMLHRElement;
 
   $: current = quiz[currentQuestionIndex];
   $: {
@@ -24,6 +25,7 @@
       submitButtonText = 'Next Question';
     }
   }
+  $: progress = ((currentQuestionIndex + 1) / total) * 100;
 
   function onSelect(idx: number) {
     if (status !== 'none') {
@@ -41,6 +43,7 @@
       selected = -1;
       status = 'none';
       currentQuestionIndex = Math.min(currentQuestionIndex + 1, total - 1);
+      progressBarEl.style.setProperty('width', `${progress}%`);
       return;
     }
 
@@ -61,47 +64,57 @@
   const onSubmit = debounce(_onSubmit, 200);
 </script>
 
-<p class="text-body-small text-grey-navy">Question {currentQuestionIndex + 1} of {total}</p>
+<article class="md:flex">
+  <section class="md:w-1/2 flex flex-col">
+    <p class="text-body-small text-grey-navy">Question {currentQuestionIndex + 1} of {total}</p>
+    <h1 class="mt-3 text-dark-navy text-xl font-medium sm:text-4xl sm:mt-7">{current.question}</h1>
+    <hr
+      class="bg-purple h-2 rounded-lg mt-7 w-0 sm:mt-11 md:mt-auto md:-translate-y-28"
+      bind:this={progressBarEl}
+    />
+  </section>
 
-<h1 class="mt-3 text-dark-navy text-xl font-medium sm:text-4xl sm:mt-7">{current.question}</h1>
-
-<hr class="bg-purple h-2 max-w-[55%] rounded-lg mt-7 sm:mt-11 sm:max-w-[50%]" />
-
-<ul class="mt-10 space-y-2 sm:space-y-6 sm:mt-16">
-  {#each current.options as option, idx}
-    <li
-      class="bg-white rounded-xl shadow-list-item p-3 sm:p-7 sm:rounded-3xl"
-      class:error={idx === selected && status === 'error'}
-      class:selected={idx === selected}
-      class:success={idx === selected && status === 'success'}
-    >
-      <button class="flex items-center gap-x-4 w-full" on:click={() => onSelect(idx)}>
-        <p
-          class="letter flex items-center justify-center rounded-md h-10 w-10 text-center text-lg font-medium text-grey-navy sm:text-2xl"
+  <section class="md:w-1/2">
+    <ul class="mt-10 space-y-2 sm:space-y-6 sm:mt-16">
+      {#each current.options as option, idx}
+        <li
+          class="bg-white rounded-xl shadow-list-item sm:rounded-3xl"
+          class:error={idx === selected && status === 'error'}
+          class:selected={idx === selected}
+          class:success={idx === selected && status === 'success'}
         >
-          {letters[idx]}
-        </p>
-        <p class="text-lg font-medium text-dark-navy sm:text-2xl">{option}</p>
-        {#if (idx === selected && status === 'success') || (status === 'error' && current.answer === option)}
-          <img src="/images/icon-correct.svg" alt="" class="ml-auto" />
-        {:else if idx === selected && status === 'error'}
-          <img src="/images/icon-incorrect.svg" alt="" class="ml-auto" />
-        {/if}
-      </button>
-    </li>
-  {/each}
-</ul>
+          <button
+            class="flex items-center gap-x-4 w-full group p-3 sm:p-7"
+            on:click={() => onSelect(idx)}
+          >
+            <p
+              class="letter flex items-center justify-center rounded-md h-10 w-10 text-center text-lg font-medium text-grey-navy sm:text-2xl group-hover:bg-light-purple group-hover:text-purple"
+            >
+              {letters[idx]}
+            </p>
+            <p class="text-lg font-medium text-dark-navy sm:text-2xl">{option}</p>
+            {#if (idx === selected && status === 'success') || (status === 'error' && current.answer === option)}
+              <img src="/images/icon-correct.svg" alt="" class="ml-auto" />
+            {:else if idx === selected && status === 'error'}
+              <img src="/images/icon-incorrect.svg" alt="" class="ml-auto" />
+            {/if}
+          </button>
+        </li>
+      {/each}
+    </ul>
 
-<button
-  class="btn h-auto bg-purple text-white border-0 rounded-xl shadow-list-item mt-3 block w-full sm:text-2xl sm:py-6 sm:mt-8"
-  on:click={onSubmit}>{submitButtonText}</button
->
-{#if isDirty && selected === -1}
-  <small
-    class="mt-3 text-red text-lg flex items-center justify-center gap-x-2.5 font-regular sm:text-xs sm:mt-8"
-    ><img src="/images/icon-error.svg" alt="" /> Please select an answer</small
-  >
-{/if}
+    <button
+      class="btn h-auto bg-purple text-white border-0 rounded-xl shadow-list-item mt-3 block w-full sm:text-2xl sm:py-6 sm:mt-8 md:rounded-3xl"
+      on:click={onSubmit}>{submitButtonText}</button
+    >
+    {#if isDirty && selected === -1}
+      <small
+        class="mt-3 text-red text-lg flex items-center justify-center gap-x-2.5 font-regular sm:text-xs sm:mt-8"
+        ><img src="/images/icon-error.svg" alt="" /> Please select an answer</small
+      >
+    {/if}
+  </section>
+</article>
 
 <style lang="postcss">
   .selected {
