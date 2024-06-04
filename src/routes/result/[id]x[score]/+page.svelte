@@ -12,7 +12,7 @@
     Quiz completed <br /> <b>You scored...</b>
   </h1>
 
-  <section class="sm:mt-16 md:w-1/2 md:mt-0">
+  <section class="mt-10 sm:mt-16 md:w-1/2 md:mt-0">
     <article class="bg-white shadow-list-item rounded-xl py-8 sm:py-12 sm:rounded-3xl dark:bg-navy">
       <div class="flex justify-center">
         <QuizTitle text={data.title} />

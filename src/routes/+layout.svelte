@@ -1,9 +1,13 @@
 <script>
+  import { onMount } from 'svelte';
   import { page } from '$app/stores';
   import '../app.css';
   import Header from '$lib/components/header.svelte';
 
-  let isDarkMode = true;
+  let isDarkMode = false;
+  onMount(() => {
+    isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  });
 </script>
 
 <article class="w-full h-full" class:dark={isDarkMode}>

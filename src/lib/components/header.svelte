@@ -4,6 +4,9 @@
   export let text = '';
   export let isDarkMode = false;
 
+  $: lightModeSrc = isDarkMode ? '/images/icon-sun-light.svg' : '/images/icon-sun-dark.svg';
+  $: moonModeSrc = isDarkMode ? '/images/icon-moon-light.svg' : '/images/icon-moon-dark.svg';
+
   const dispatch = createEventDispatcher();
 
   function onToggle() {
@@ -15,7 +18,7 @@
   <QuizTitle {text} />
   <div class="ml-auto flex items-center gap-x-2">
     <button>
-      <img src="/images/icon-sun-dark.svg" alt="" />
+      <img src={lightModeSrc} alt="" />
     </button>
     <input
       type="checkbox"
@@ -24,7 +27,7 @@
       checked={isDarkMode}
     />
     <button>
-      <img src="/images/icon-moon-dark.svg" alt="" />
+      <img src={moonModeSrc} alt="" />
     </button>
   </div>
 </article>
