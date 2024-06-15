@@ -41,6 +41,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [Github](https://github.com/pixelHat/frontend-mentor-quiz-app/tree/main)
+- Live: [Website](https://666e28993d4ad03642aa6884--adorable-brigadeiros-28ed3d.netlify.app/)
 
 ## My process
 
